@@ -1,17 +1,28 @@
 package com.walkerwang.datastructure;
 
+/*
+ * 排序算法
+ */
 public class SortAlg {
 	
 	public static void main(String[] args) {
 		int[] arr = {3,7,2,5,8,4,1,6,9};
-		//1-快速排序
-//		quickSort(arr,0,arr.length-1);
-		//2-归并排序
-		mergeSort(arr,0,arr.length-1);
-		//3-堆排序
+		/*1-快速排序
+		quickSort(arr,0,arr.length-1);
+		*/
 		
-		//4-冒泡排序
-//		bubbleSort(arr);
+		/*2-归并排序
+		mergeSort(arr,0,arr.length-1);
+		*/
+		
+		/*3-堆排序
+
+		 */
+		
+		/*4-冒泡排序
+		bubbleSort(arr);
+		*/
+		
 		printArray(arr);
 	}
 	

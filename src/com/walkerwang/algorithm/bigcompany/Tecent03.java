@@ -1,4 +1,4 @@
-package com.walkerwang.algorithm.goldcode;
+package com.walkerwang.algorithm.bigcompany;
 
 /**
  * [编程题] 构造回文

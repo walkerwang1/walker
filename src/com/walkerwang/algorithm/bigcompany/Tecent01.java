@@ -1,4 +1,4 @@
-package com.walkerwang.algorithm.goldcode;
+package com.walkerwang.algorithm.bigcompany;
 
 import java.util.Scanner;
 
@@ -37,7 +37,7 @@ public class Tecent01 {
 //		}
 	}
 	
-	//冒泡排序
+	//改进的冒泡排序
 	public static void bubbleSort(String str) {
 		char[] chs = str.toCharArray();
 		//从尾部开始需要第一个不是大写的字符

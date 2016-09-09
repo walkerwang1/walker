@@ -1,4 +1,4 @@
-package com.walkerwang.algorithm.goldcode;
+package com.walkerwang.algorithm.bigcompany;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 /**
+ * 有趣的数字
  * 小Q今天在上厕所时想到了这个问题：有n个数，两两组成二元组，差最小的有多少对呢？差最大呢？
 
 	输入描述:

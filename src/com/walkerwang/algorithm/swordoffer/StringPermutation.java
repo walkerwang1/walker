@@ -1,6 +1,7 @@
 package com.walkerwang.algorithm.swordoffer;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -15,24 +16,30 @@ import java.util.List;
  *
  */
 public class StringPermutation {
-	static ArrayList<String> list = new ArrayList<>();
+	static List<String> list = new ArrayList<>();
+	static int count = 0;
 	
 	public static void main(String[] args) {
 		String str = "abc";
 		int start = 0;
 		int end = str.length()-1;
 		permutation(str, start, end);
+		Iterator<String> iter = list.iterator();
+		while(iter.hasNext()) {
+			System.out.println(iter.next());
+		}
+		System.out.println(count);
 	}
 	
 	/*
 	 * 将字符串第一位与其他位不断交换，交换一个后递归
+	 * （字符串中有重复字符没有考虑到）
 	 */
 	public static void permutation(String str, int start, int end) {
-		int count = 0;	//记录全排列的个数
 		
 		//递归的出口
 		if(start == end){
-			System.out.println(str);
+			list.add(str);
 			count++;
 		}else{
 			for(int i=start; i<=end; i++) {
