@@ -12,4 +12,8 @@ public class Util {
 			p = p.next;
 		}
 	}
+	
+	public static void gc2() {
+		
+	}
 }
