@@ -1,4 +1,4 @@
-package com.walkerwang.multithread;
+package com.walkerwang.concurrent;
 
 class Info{
 	private String title;

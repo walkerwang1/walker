@@ -1,4 +1,4 @@
-package com.walkerwang.multithread;
+package com.walkerwang.concurrent;
 
 
 import java.util.concurrent.Callable;

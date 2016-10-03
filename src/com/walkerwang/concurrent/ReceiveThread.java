@@ -1,8 +1,10 @@
-package com.walkerwang.net;
+package com.walkerwang.concurrent;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.Socket;
+
+import com.walkerwang.net.CloseUtil;
 
 public class ReceiveThread implements Runnable {
 	

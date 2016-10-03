@@ -45,6 +45,7 @@ public class Singleton {
 }
 
 /*
+ *3-静态内部类 static nested class
  *每次去拿synchronized的锁会影响并发量
  */
 class StaticSingleton {
@@ -57,7 +58,7 @@ class StaticSingleton {
 	 * 并且去掉了synchronized，让性能更优，用static来确保唯一性。
 	 */
 	private static class SingletonHolder {
-		private static StaticSingleton instance = new StaticSingleton();
+		private static final StaticSingleton instance = new StaticSingleton();
 	}
 	
 	private static StaticSingleton getInstance() {

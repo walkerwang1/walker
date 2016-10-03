@@ -29,15 +29,17 @@ public class Tecent01 {
 		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		
-//		while(scanner.hasNext()) {
-//			String str = scanner.nextLine();
-			String str = "AEleBiCeilD";
+		while(scanner.hasNext()) {
+			String str = scanner.nextLine();
+//			String str = "AEleBiCeilD";
 			bubbleSort(str);
 			moveBack(str);
-//		}
+		}
 	}
 	
-	//改进的冒泡排序
+	/*
+	 * 改进的冒泡排序
+	 */
 	public static void bubbleSort(String str) {
 		char[] chs = str.toCharArray();
 		//从尾部开始需要第一个不是大写的字符
@@ -77,8 +79,8 @@ public class Tecent01 {
 				chs[chs.length-1] = tmp;	//该大写字符放到最后
 				flag = true;
 				count++;
-//				if(flag == true)
-//					System.out.println(String.valueOf(chs));
+				if(flag == true)
+					System.out.println(String.valueOf(chs));
 				i--;
 			}
 		}

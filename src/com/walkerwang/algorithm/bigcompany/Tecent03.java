@@ -1,5 +1,7 @@
 package com.walkerwang.algorithm.bigcompany;
 
+import java.util.Scanner;
+
 /**
  * [编程题] 构造回文
  * 
@@ -24,5 +26,36 @@ package com.walkerwang.algorithm.bigcompany;
  *
  */
 public class Tecent03 {
-
+	@SuppressWarnings("resource")
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		String str1 = scanner.nextLine();
+		String str2 = new StringBuilder(str1).reverse().toString();
+		System.out.println(str1.length()-LCS(str1, str2));
+	}
+	
+	public static int LCS(String str1, String str2) {
+		char[] chs1 = str1.toCharArray();
+		char[] chs2 = str2.toCharArray();
+		int[][] c = new int[chs1.length+1][chs2.length+1];
+		for(int i=0; i<=chs1.length; i++) {
+			c[i][0] = 0;
+		}
+		for(int i=0; i<=chs2.length; i++) {
+			c[0][i] = 0;
+		}
+		for(int i=1; i<=str1.length(); i++) {
+			for(int j=1; j<=str2.length(); j++) {
+				if(chs1[i-1] == chs2[j-1]){
+					c[i][j] = c[i-1][j-1] +1;
+				}else if (c[i-1][j] >= c[i][j-1]) {
+					c[i][j] = c[i-1][j];
+				}else {
+					c[i][j] = c[i][j-1];
+				}
+			}
+		}
+		
+		return c[chs1.length][chs2.length];
+	}
 }

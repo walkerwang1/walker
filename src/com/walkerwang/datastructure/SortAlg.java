@@ -2,16 +2,20 @@ package com.walkerwang.datastructure;
 
 /*
  * 排序算法
+ * http://www.cricode.com/3212.html
  */
 public class SortAlg {
 	
 	public static void main(String[] args) {
+		SortAlg sortAlg = new SortAlg();
 		int[] arr = {3,7,2,5,8,4,1,6,9};
 		/*1-快速排序
+		System.out.println("快速排序:");
 		quickSort(arr,0,arr.length-1);
 		*/
 		
 		/*2-归并排序
+		System.out.println("归并排序:");
 		mergeSort(arr,0,arr.length-1);
 		*/
 		
@@ -19,9 +23,20 @@ public class SortAlg {
 
 		 */
 		
-		/*4-冒泡排序
-		bubbleSort(arr);
-		*/
+		/*5-希尔排序
+		 */
+		System.out.println("希尔排序:");
+		sortAlg.shellSort(arr);
+		
+		/*6-插入排序
+		System.out.println("插入排序:");
+		sortAlg.insertSort(arr);
+		 */
+		
+		/*6-插入排序
+		System.out.println("插入排序:");
+		sortAlg.insertSort(arr);
+		 */
 		
 		printArray(arr);
 	}
@@ -29,7 +44,7 @@ public class SortAlg {
 	/**
 	 * 1-快速排序（不稳定）
 	 */
-	public static void quickSort(int[] arr, int left, int right){
+	public void quickSort(int[] arr, int left, int right){
 		if(left >=right)
 			return;
 		int tmp = arr[left];
@@ -62,12 +77,12 @@ public class SortAlg {
 	/**
 	 * 2-归并/合并排序（稳定）
 	 */
-	public static void mergeSort(int[] arr, int left, int right){
+	public void mergeSort(int[] arr, int left, int right){
 		if(left < right){
 			int mid = (left+right)/2;
 			mergeSort(arr, left, mid);
 			mergeSort(arr, mid+1, right);
-			merge2SortedArr(arr,left,mid,right);
+			merge2SortedArr(arr,left,mid,right);	// 合并两个有序的数组
 		}
 	}
 	
@@ -78,15 +93,11 @@ public class SortAlg {
 	/**
 	 * 4-冒泡排序（稳定）
 	 */
-	public static void bubbleSort(int[] arr){
+	public void bubbleSort(int[] arr){
 		for(int i=1; i<arr.length; i++){	//比较次数
 			for(int j=0; j<arr.length-i; j++){ 	//最大的数移动最右边
 				if(arr[j] > arr[j+1]){
-//					swap(arr[j], arr[j+1]);	//值传递,
-					int tmp;
-					tmp = arr[j];
-					arr[j] = arr[j+1];
-					arr[j+1] = tmp;
+					swap(arr, j, j+1);
 				}
 			}
 		}
@@ -94,6 +105,54 @@ public class SortAlg {
 	
 	/**
 	 *5-希尔排序 
+	 	常用的h序列由Knuth提出，该序列从1开始，通过如下公式产生：
+		h = 3 * h +1
+		反过来程序需要反向计算h序列，应该使用
+		h=(h-1)/3
+	 */
+	public void shellSort(int[] arr) {
+		//计算出最大的h值
+		int h = 1;
+		while(h <= arr.length/3) {
+			h = h*3 + 1;
+		}
+//		h = 1;	//相当于插入排序
+		while(h > 0) {
+			for(int i=h; i<arr.length; i++) {
+				for(int j=i; j>=h; j-=h){
+					if(arr[j] < arr[j-h]) {
+						swap(arr, j, j-h);
+					}
+				}
+			}
+			printArray(arr);
+			//计算出下一个h的值
+			h = (h-1)/3;
+		}
+	}
+	
+	
+	/**
+	 * 6-插入排序
+	 */
+	public void insertSort(int[] arr) {
+		for(int i=1; i<arr.length; i++) {
+			for(int j=i; j>=1; j--){
+				if(arr[j] < arr[j-1]){
+					swap(arr, j, j-1);
+				}
+			}
+		}
+	}
+	
+	
+	/**
+	 * 7-选择排序
+	 */
+	
+	
+	/**
+	 * 8-基数排序
 	 */
 	
 	
@@ -101,7 +160,7 @@ public class SortAlg {
 	 * 合并两个有序的数组（与连接两个有序的单链表操作类似）
 	 * arr[left,mid]和arr[mid+1,right]是两个有序的数组，对其整合排序
 	 */
-	public static void merge2SortedArr(int[] arr, int left, int mid, int right){
+	public void merge2SortedArr(int[] arr, int left, int mid, int right){
 		int[] tmp = new int[right+1];
 		int i=left, j=mid+1;
 		int m=mid, n=right;
@@ -120,18 +179,17 @@ public class SortAlg {
 			tmp[k++] = arr[j++];
 		}
 		for(i=0;i<k; i++){
-			arr[left+i] = tmp[i];
+			arr[left+i] = tmp[i];	//这里的下标要注意
 		}
 	}
 	
 	/**
-	 * 交换值，原来的值并没有交换
+	 * 交换内容，用数组索引
 	 */
-	public static <T> void swap(T a, T b){
-		T tmp;
-		tmp = a;
-		a = b;
-		b = tmp;
+	public void swap(int[] arr, int index1, int index2){
+		int tmp = arr[index1];
+		arr[index1] = arr[index2];
+		arr[index2] = tmp;
 	}
 	
 	public static void printArray(int[] arr){

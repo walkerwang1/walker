@@ -1,4 +1,4 @@
-package com.walkerwang.net;
+package com.walkerwang.concurrent;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -6,6 +6,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
+
+import com.walkerwang.net.CloseUtil;
 
 /**
  * 该类为多线程类，用于服务器
