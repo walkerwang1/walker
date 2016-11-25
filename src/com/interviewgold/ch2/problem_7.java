@@ -28,7 +28,7 @@ public class problem_7 {
 	 * 反转链表-非递归
 	 */
 	public Node<Integer> reverList01(Node<Integer> node) {
-		
+		Node<Integer> retHead = null;
 		return null;
 	}
 	
