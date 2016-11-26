@@ -6,11 +6,11 @@ package com.interviewgold.ch2;
 public class problem_2 {
 
 	public static void main(String[] args) {
-		Node<Integer> node1 = new Node<>(1);
-		Node<Integer> node2 = new Node<>(2);
-		Node<Integer> node3 = new Node<>(3);
-		Node<Integer> node4 = new Node<>(4);
-		Node<Integer> node5 = new Node<>(5);
+		Node node1 = new Node(1);
+		Node node2 = new Node(2);
+		Node node3 = new Node(3);
+		Node node4 = new Node(4);
+		Node node5 = new Node(5);
 		node1.next = node2;
 		node2.next = node3;
 		node3.next = node4;
@@ -22,7 +22,7 @@ public class problem_2 {
 	/*
 	 * 1-快行指针
 	 */
-	public int solution01(Node<Integer> node, int k) {
+	public int solution01(Node node, int k) {
 		if (node == null || k < 0) {
 			return -1;
 		}
@@ -38,6 +38,6 @@ public class problem_2 {
 			slow = slow.next;
 			fast = fast.next;
 		}
-		return (int) slow.item;
+		return (int) slow.data;
 	}
 }

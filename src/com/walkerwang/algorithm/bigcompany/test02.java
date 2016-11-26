@@ -3,7 +3,7 @@ package com.walkerwang.algorithm.bigcompany;
 import java.io.*;
 import java.util.*;
 
-public class Main
+public class test02
 {
     public static void main(String args[])
     {

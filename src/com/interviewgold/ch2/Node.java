@@ -3,13 +3,13 @@ package com.interviewgold.ch2;
 /*
  * 链表节点定义
  */
-public class Node<E> {
-	 E item;
-     Node<E> next;
-     Node<E> prev;
+public class Node {
+	 int data;
+     Node next;
+     Node prev;
 
-     Node(Node<E> prev, E element, Node<E> next) {
-         this.item = element;
+     Node(Node prev, int element, Node next) {
+         this.data = element;
          this.next = next;
          this.prev = prev;
      }
@@ -17,7 +17,7 @@ public class Node<E> {
      /*
       * 这个只是方便《面试经典》程序用，上面那个是仿照JDK的LinkedList写的
       */
-     Node(E element) {
-    	 this.item = element;
+     Node(int element) {
+    	 this.data = element;
      }
 }
