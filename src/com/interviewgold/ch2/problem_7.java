@@ -86,6 +86,7 @@ public class problem_7 {
 		return false;
 	}
 	
+	
 	/*
 	 * 反转链表-非递归
 	 */
