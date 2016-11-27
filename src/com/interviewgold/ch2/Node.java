@@ -14,6 +14,10 @@ public class Node {
          this.prev = prev;
      }
      
+     Node() {
+    	 
+     }
+     
      /*
       * 这个只是方便《面试经典》程序用，上面那个是仿照JDK的LinkedList写的
       */
