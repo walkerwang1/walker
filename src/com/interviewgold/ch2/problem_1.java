@@ -22,7 +22,6 @@ public class problem_1 {
 		problem_1 p = new problem_1();
 		p.printList(node1);
 		p.printList(p.solution01(node1));
-		String string;
 		Arrays.sort("wang".toCharArray());
 	}
 	
