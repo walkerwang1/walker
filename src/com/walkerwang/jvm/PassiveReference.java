@@ -1,11 +1,17 @@
 package com.walkerwang.jvm;
 
+/**
+ * 被动引用的三种情况
+ * @author walkerwang
+ *
+ */
 public class PassiveReference {
 
 	public static void main(String[] args) {
 		System.out.println(SubClass.value);		//不会初始化子类SubClass
 		
 		ArrayClass ac1 = new ArrayClass();	//初始化ArrayClass类
+		//这个应该跟数组的数组的结构有关系
 		ArrayClass[] ac2 = new ArrayClass[10];	//不会初始化ArrayClass类
 		
 		System.out.println(ConstClass.HELLOWORLD);
