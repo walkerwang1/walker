@@ -2,6 +2,7 @@ package com.walkerwang.list;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * 实现ArrayList
@@ -21,6 +22,7 @@ public class ImplArrayList {
 	 */
 	
 	public static void main(String[] args) {
-		List<Integer> list = new ArrayList<>();
+		ArrayList<Integer> list = new ArrayList<>();
+		TreeSet<Integer> treeSet = new TreeSet<>();
 	}
 }
