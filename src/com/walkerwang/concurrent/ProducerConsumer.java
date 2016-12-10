@@ -1,5 +1,30 @@
 package com.walkerwang.concurrent;
 
+public class ProducerConsumer {
+
+	/*
+	 * 生产者-消费者存在的问题：
+	 * 	1：一条消息还没有生产完就被消费，即"姓名-1  内容-2",两条消息交替出现。
+	 * 	 同步机制：即生产的时候不能消费
+	 *  2：只生产n条信息，却消费m条，m>n
+	 *  线程通信：当没有生产消息时不能消费
+	 */
+	public static void main(String[] args) {
+		
+		Info info = new Info();
+		Producer producer = new Producer(info);
+		Consumer consumer = new Consumer(info);
+		
+		new Thread(producer).start();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		new Thread(consumer).start();
+	}
+}
+
 class Info{
 	private String title;
 	private String content;
@@ -45,27 +70,27 @@ class Info{
 	}
 }
 
-class Productor implements Runnable {
+class Producer implements Runnable {
 	private Info info;
-	public Productor(Info info) {
+	public Producer(Info info) {
 		this.info = info;
 	}
 	@Override
 	public void run() {
 		for(int x = 0; x<100; ++x){
 			if (x % 2 == 0) {
-				this.info.set("wang","好学生一枚");
+				this.info.set("标题-1","内容-1");
 			} else {
-				this.info.set("康","bad student");
+				this.info.set("标题-2","内容-2");
 			}
 		}
 	}
 }
 
 
-class Customer implements Runnable {
+class Consumer implements Runnable {
 	private Info info;
-	public Customer(Info info) {
+	public Consumer(Info info) {
 		this.info = info;
 	}
 	@Override
@@ -75,16 +100,4 @@ class Customer implements Runnable {
 		}
 	}
 	
-}
-
-public class ProductorCustomer {
-	public static void main(String[] args) {
-		Info info = new Info();
-		Productor p1 = new Productor(info);
-		Customer c1 = new Customer(info);
-		new Thread(p1).start();
-		new Thread(c1).start();
-//		new Thread(new Productor(info)).start();
-//		new Thread(new Customer(info)).start();
-	}
 }
