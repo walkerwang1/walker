@@ -68,6 +68,7 @@ public class TCPServer {
 	}
 	
 	//内部类，给每个客户端分配一个线程
+	@SuppressWarnings({ "unused" })
 	private class MyChannel implements Runnable {
 		private BufferedReader console;
 		private DataOutputStream dos;
