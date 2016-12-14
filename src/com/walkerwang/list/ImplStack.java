@@ -1,6 +1,7 @@
 package com.walkerwang.list;
 
 import java.util.Stack;
+import java.util.Vector;
 
 /**
  * 实现Stack
@@ -23,5 +24,7 @@ public class ImplStack {
 
 	public static void main(String[] args) {
 		Stack<Object> stack = new Stack<>();
+		
+		Vector<Object> vector = new Vector<>();
 	}
 }

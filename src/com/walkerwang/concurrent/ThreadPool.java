@@ -20,14 +20,14 @@ public class ThreadPool {
 		
 		ExecutorService executorService = Executors.newCachedThreadPool();
 		List<Future<String>> resultList = new ArrayList<>();
-		
+		Future<String> future = null;
 		for(int i = 0; i < 10; i++) {
 			//1-调用Runabl任务
 //			executorService.execute(new TestRunnable());
 			
 			//2-调用Callable任务
 			//使用ExecutorService执行Callable类型的任务，并将结果保存在future变量中   
-			Future<String> future = executorService.submit(new TestCallable(i+1));
+			future = executorService.submit(new TestCallable(i+1));
 			//将Callable任务执行结果保存到List中
 			resultList.add(future);
 		}
@@ -43,10 +43,11 @@ public class ThreadPool {
 			try {
 				//如果Future的返回结果没有完成，则一直循环等待（即get()造成阻塞），直到Future返回完成
 				while(!retFuture.isDone()){}
-				
-				System.out.println(retFuture.get());	//返回各线程的执行结果
+				String result = retFuture.get();
+				System.out.println(result);	//返回各线程的执行结果
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				Thread.currentThread().interrupt();	//重新设置线程的中断状态
+				future.cancel(true);	//由于不需要结果，因此取消任务
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			} finally {

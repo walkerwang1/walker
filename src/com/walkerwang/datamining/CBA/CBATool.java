@@ -190,7 +190,6 @@ public class CBATool {
 			if (itemIsSatisfied(item, attrValueList)) {
 				tempArray = item.getIdArray();
 				classType = classificationBaseRules(tempArray);
-
 				if (classType != null) {
 					// 作属性替换
 					classType = num2Attr.get(Integer.parseInt(classType));
@@ -198,7 +197,6 @@ public class CBATool {
 				}
 			}
 		}
-
 		return classType;
 	}
 
