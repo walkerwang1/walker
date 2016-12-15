@@ -17,7 +17,7 @@ import java.util.concurrent.Future;
 public class ThreadPool {
 
 	public static void main(String[] args) {
-		
+
 		ExecutorService executorService = Executors.newCachedThreadPool();
 		List<Future<String>> resultList = new ArrayList<>();
 		Future<String> future = null;

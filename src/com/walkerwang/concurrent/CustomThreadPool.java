@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class CustomThreadPool {
 	
 	public static void main(String[] args) {
+		
 		//线程池中所保存的核心线程数，包括空闲线程
 		int corePoolSize = 3;	
 		//线程池中允许的最大线程数（什么时候最大线程会起作用）
