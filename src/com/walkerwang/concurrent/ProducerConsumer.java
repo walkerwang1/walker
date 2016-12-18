@@ -1,14 +1,19 @@
 package com.walkerwang.concurrent;
 
+/*
+ * 生产者-消费者模式
+ * 
+ * 生产者-消费者存在的问题：
+ * 	1：一条消息还没有生产完就被消费，即"姓名-1  内容-2",两条消息交替出现。
+ * 	 同步机制：即生产的时候不能消费
+ *  2：只生产n条信息，却消费m条，m>n
+ *  线程通信：当没有生产消息时不能消费
+ *  
+ *  （1）生产一条信息消费一条
+ *  （2）生产者生产多条，存放在一个有界队列中，然后消费者从队列中取消息（相当于缓冲区，还没实现）
+ */
 public class ProducerConsumer {
 
-	/*
-	 * 生产者-消费者存在的问题：
-	 * 	1：一条消息还没有生产完就被消费，即"姓名-1  内容-2",两条消息交替出现。
-	 * 	 同步机制：即生产的时候不能消费
-	 *  2：只生产n条信息，却消费m条，m>n
-	 *  线程通信：当没有生产消息时不能消费
-	 */
 	public static void main(String[] args) {
 		
 		Info info = new Info();
@@ -25,6 +30,9 @@ public class ProducerConsumer {
 	}
 }
 
+/*
+ * 生产的内容
+ */
 class Info{
 	private String title;
 	private String content;
@@ -70,6 +78,9 @@ class Info{
 	}
 }
 
+/*
+ * 生产者
+ */
 class Producer implements Runnable {
 	private Info info;
 	public Producer(Info info) {
@@ -87,7 +98,9 @@ class Producer implements Runnable {
 	}
 }
 
-
+/*
+ * 消费者
+ */
 class Consumer implements Runnable {
 	private Info info;
 	public Consumer(Info info) {

@@ -1,5 +1,9 @@
 package com.walkerwang.designpattern;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /*
  * 设计模式——单例模式
  * 
@@ -8,7 +12,15 @@ package com.walkerwang.designpattern;
 public class Singleton {
 
 	public static void main(String[] args) {
-		
+		ExecutorService executor = Executors.newCachedThreadPool();
+		for(int i = 0; i < 10; i++) {
+			Runnable thread = new Runnable() {
+				public void run() {
+					System.out.println(EagerSingleton.getInstance().hashCode());
+				}
+			};
+			executor.execute(thread);
+		}
 	}
 }
 
@@ -44,9 +56,13 @@ class LazySingleton {
 	//私有构造方法
 	private LazySingleton() {}
 	
-	//静态工厂方法
+	//静态工厂方法（synchronized关键字避免了多个线程进入getInstance()方法而导致实例不唯一）
 	public static synchronized LazySingleton getInstance() {
 		if (instance == null) {
+			try {
+				//创建实例之前需要一些准备性的耗时操作
+				Thread.sleep(300);
+			} catch (Exception e) {}
 			instance = new LazySingleton();
 		}
 		return instance;
@@ -83,9 +99,11 @@ class InnerClassSingleton {
  * 
  * JVM对于volatile关键字的实现的问题，会导致“双重检查加锁”的失败，
  * 因此“双重检查加锁”机制只只能用在java5及以上的版本。
+ * 由于volatile关键字可能会屏蔽掉虚拟机中一些必要的代码优化，所以运行效率并不是很高.
  */
 class DoubleCheckSingleton {
-	private static DoubleCheckSingleton instance = null;
+	//使用volatile关键字保证其可见性
+	private volatile static DoubleCheckSingleton instance = null;
 	
 	private DoubleCheckSingleton() {}
 	

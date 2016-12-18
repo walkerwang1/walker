@@ -19,6 +19,10 @@ public class ThreadPool {
 	public static void main(String[] args) {
 
 		ExecutorService executorService = Executors.newCachedThreadPool();
+		ExecutorService executorService2 = Executors.newCachedThreadPool();
+		System.out.println(executorService);
+		System.out.println(executorService2);
+		
 		List<Future<String>> resultList = new ArrayList<>();
 		Future<String> future = null;
 		for(int i = 0; i < 10; i++) {
@@ -61,7 +65,6 @@ public class ThreadPool {
 				executorService.shutdown();
 			}
 		}
-		
 	}
 }
 
