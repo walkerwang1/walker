@@ -1,67 +1,122 @@
 package com.walkerwang.designpattern;
 
 /*
- * 设计模式1：单例模式
+ * 设计模式——单例模式
+ * 
+ * static确保唯一性
  */
 public class Singleton {
-	
-	/*
-	 * 饿汉式单例
-	 * 
-	 * 私有构造方法和static来确定唯一性。
-		缺点：何时产生实例 不好控制 
-		虽然我们知道，在类Singleton第一次被加载的时候，就产生了一个实例。
-		但是如果这个类中有其他属性
-	 */
-	/*
-	private Singleton() {
-		System.out.println("Singleton is created");
+
+	public static void main(String[] args) {
+		
 	}
-	private static Singleton instance = new Singleton();
-	public static Singleton getInstance() {
+}
+
+/*
+ * 饿汉式单例模式
+ * 
+ * 特点：空间换时间、非线程安全
+ * 类加载时就创建了EagerSingleton对象
+ */
+class EagerSingleton {
+	
+	private static EagerSingleton instance = new EagerSingleton();
+	
+	//私有构造器
+	private EagerSingleton () {}
+	
+	//静态工厂方法
+	public static EagerSingleton getInstance() {
 		return instance;
 	}
-	*/
+}
+
+
+/*
+ * 懒汉式单例模式
+ * 
+ * 特点：时间换空间，线程安全
+ */
+class LazySingleton {
 	
-	/*
-	 * 懒汉式单例
-	 
-	 让instance只有在调用getInstance()方式时被创建，并且通过synchronized来确保线程安全。
-	这样就控制了何时创建实例。
-	这种方法是延迟加载的典型。
-	但是有一个问题就是，在高并发的场景下性能会有影响，虽然只有一个判断就return了，但是在并发量很高的情况下，或多或少都会有点影响，因为都要去拿synchronized的锁。
-	 */
-	private Singleton() {
-		System.out.println("Singleton is create");
-	}
+	private static LazySingleton instance = null;
 	
-	private static Singleton instance = null;
-	public static synchronized Singleton getInstance() {
-		if(instance == null){
-			instance = new Singleton();
+	//私有构造方法
+	private LazySingleton() {}
+	
+	//静态工厂方法
+	public static synchronized LazySingleton getInstance() {
+		if (instance == null) {
+			instance = new LazySingleton();
 		}
 		return instance;
 	}
 }
 
 /*
- *3-静态内部类 static nested class
- *每次去拿synchronized的锁会影响并发量
+ * Lazy initialization holder class模式（类级内部类，延迟加载）
+ * 
+ * 特点：线程安全，getInstance()不需要同步
+ * 延迟加载：JVM加载一个类时，其内部类不会被加载。
  */
-class StaticSingleton {
-	private StaticSingleton () {
-		System.out.println("StaticSingleton is created");
-	}
+class InnerClassSingleton {
 	
-	/*
-	 * 加载一个类时，其内部类不会被加载。这样保证了只有调用getInstance()时才会产生实例，控制了生成实例的时间，实现了延迟加载。
-	 * 并且去掉了synchronized，让性能更优，用static来确保唯一性。
-	 */
+	private InnerClassSingleton(){}
+	
+	//类级内部类，也就是静态的成员式内部类，该内部类的实例与外部类的实例没有绑定关系，
+	//而且只有被调用时才会装载，从而实现了延迟加载。
 	private static class SingletonHolder {
-		private static final StaticSingleton instance = new StaticSingleton();
+		//静态初始化，由JVM来保证线程安全
+		private static InnerClassSingleton instance = new InnerClassSingleton();
 	}
 	
-	private static StaticSingleton getInstance() {
+	public static InnerClassSingleton getInstance() {
+		//域的访问
 		return SingletonHolder.instance;
+	}
+}
+
+/*
+ * 双重检查加锁
+ * 
+ * 特点：线程安全，性能（时间/空间）不受太大影响
+ * 
+ * JVM对于volatile关键字的实现的问题，会导致“双重检查加锁”的失败，
+ * 因此“双重检查加锁”机制只只能用在java5及以上的版本。
+ */
+class DoubleCheckSingleton {
+	private static DoubleCheckSingleton instance = null;
+	
+	private DoubleCheckSingleton() {}
+	
+	public static DoubleCheckSingleton getInstance() {
+		//先检查实例是否存在，不存在则进入同步块
+		if (instance == null) {
+			//同步块，线程安全的创建实例
+			synchronized(DoubleCheckSingleton.class) {
+				//再次检查实例是否存在，不存在则真正创建
+				if (instance == null) {
+					instance = new DoubleCheckSingleton();
+				}
+			}
+		}
+		return instance;
+	}
+}
+
+
+/*
+ * 枚举
+ * 
+ * 特点：简洁、序列化
+ * 并由JVM从根本上提供保障，绝对防止多次实例化，是更简洁、高效、安全的实现单例的方式。
+ */
+enum EnumSingleton {
+	//定义一个枚举元素，代表Singleton的一个实例
+	uniqueInstance;
+	
+	//单例可以有自己的操作
+	public void singletonOperation() {
+		//功能处理
 	}
 }
