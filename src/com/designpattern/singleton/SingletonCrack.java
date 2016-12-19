@@ -12,8 +12,14 @@ import java.lang.reflect.Constructor;
  * @author walkerwang
  *
  */
-public class SingletonTest {
+public class SingletonCrack {
 	public static void main(String[] args) throws Exception {
+		
+		char[] chs = {'a','b','c'};
+		char[] chs2 = new char[3];
+		char[] chs3 = new char[] {'a','b','c'};
+		System.out.println(chs3);
+		
 		//通过反射破解单例模式
 //		throughReflect();
 		
@@ -28,7 +34,7 @@ public class SingletonTest {
 		System.out.println(singleton2);
 		
 		//反射1
-		Class<LazySingleton2> clazz = (Class<LazySingleton2>)Class.forName("com.walkerwang.designpattern.LazySingleton2");
+		Class<LazySingleton2> clazz = (Class<LazySingleton2>)Class.forName("com.designpattern.singleton.LazySingleton2");
 		//反射2
 		Class<LazySingleton2> clazz2 = (Class<LazySingleton2>)singleton1.getClass();
 		Constructor<LazySingleton2> c = clazz.getDeclaredConstructor(null);
