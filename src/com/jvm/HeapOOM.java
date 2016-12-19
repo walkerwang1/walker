@@ -1,4 +1,4 @@
-package com.walkerwang.jvm;
+package com.jvm;
 
 import java.util.ArrayList;
 import java.util.List;

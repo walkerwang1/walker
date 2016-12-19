@@ -1,4 +1,4 @@
-package com.walkerwang.jvm;
+package com.jvm;
 
 /**
  * 被动引用的三种情况

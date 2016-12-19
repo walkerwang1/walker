@@ -1,4 +1,4 @@
-package com.walkerwang.jvm;
+package com.jvm;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;

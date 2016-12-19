@@ -1,4 +1,4 @@
-package com.walkerwang.concurrent;
+package com.concurrent;
 
 /**
  * 信号量（互斥的一种机制）

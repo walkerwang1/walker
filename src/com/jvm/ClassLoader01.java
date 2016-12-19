@@ -1,4 +1,4 @@
-package com.walkerwang.jvm;
+package com.jvm;
 
 public class ClassLoader01 {
 

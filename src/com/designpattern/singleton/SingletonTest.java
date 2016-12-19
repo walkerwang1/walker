@@ -1,7 +1,6 @@
-package com.walkerwang.designpattern;
+package com.designpattern.singleton;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

@@ -1,4 +1,4 @@
-package com.walkerwang.concurrent;
+package com.concurrent;
 
 /*
  * 生产者-消费者模式

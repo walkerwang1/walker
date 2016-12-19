@@ -1,4 +1,4 @@
-package com.walkerwang.concurrent;
+package com.concurrent;
 
 import java.io.DataInputStream;
 import java.io.IOException;

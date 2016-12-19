@@ -1,4 +1,4 @@
-package com.walkerwang.designpattern;
+package com.designpattern.singleton;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
