@@ -27,7 +27,7 @@ public class Singleton {
 /*
  * 饿汉式单例模式
  * 
- * 特点：空间换时间、非线程安全
+ * 特点：空间换时间、线程安全
  * 类加载时就创建了EagerSingleton对象
  */
 class EagerSingleton {
@@ -54,9 +54,14 @@ class LazySingleton {
 	private static LazySingleton instance = null;
 	
 	//私有构造方法
-	private LazySingleton() {}
+	private LazySingleton() {
+		if (instance != null) {
+			throw new RuntimeException();
+		}
+	}
 	
 	//静态工厂方法（synchronized关键字避免了多个线程进入getInstance()方法而导致实例不唯一）
+	//复合操作（检查再操作，并发是存在线程挂起问题）
 	public static synchronized LazySingleton getInstance() {
 		if (instance == null) {
 			try {
@@ -70,7 +75,8 @@ class LazySingleton {
 }
 
 /*
- * Lazy initialization holder class模式（类级内部类，延迟加载）
+ *静态内部类 
+ * Lazy initialization holder class模式（类级/静态内部类，延迟加载，也是一种懒加载）
  * 
  * 特点：线程安全，getInstance()不需要同步
  * 延迟加载：JVM加载一个类时，其内部类不会被加载。
