@@ -17,7 +17,6 @@ import java.util.concurrent.Future;
 public class ThreadPool {
 
 	public static void main(String[] args) {
-
 		ExecutorService executorService = Executors.newCachedThreadPool();
 		ExecutorService executorService2 = Executors.newCachedThreadPool();
 		System.out.println(executorService);
