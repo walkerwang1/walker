@@ -1,6 +1,7 @@
 package com.concurrent;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CyclicBarrier;
 
 /**
  * volatile变量自增运算
@@ -21,12 +22,14 @@ public class VolatileDemo {
 	private static final int THREAD_COUNT = 10;
 	
 	public static void main(String[] args) throws Exception {
-//		throughThreadActiveCount();
+		throughThreadActiveCount();
 		throughCountDownLatch();
+		throughCyclicBarrier();
 	}
 	
 	//使用ThreadActiveCount
 	static void throughThreadActiveCount() {
+		race = 0;
 		Thread[] threads = new Thread[THREAD_COUNT];
 		for(int i = 0; i < THREAD_COUNT; i++) {
 			threads[i] = new Thread( new Runnable() {
@@ -50,7 +53,7 @@ public class VolatileDemo {
 	
 	//使用CountDownLatch
 	static void throughCountDownLatch() throws Exception {
-		
+		race = 0;
 		CountDownLatch countDownLatch = new CountDownLatch(THREAD_COUNT);
 		for(int i = 0; i < THREAD_COUNT; i++) {
 			new Thread(new Runnable() {
@@ -70,7 +73,24 @@ public class VolatileDemo {
 	
 	//使用障碍器CyclicBarrier
 	static void throughCyclicBarrier() {
+		race = 0;
+		CyclicBarrier cb = new CyclicBarrier(THREAD_COUNT);
 		
+		for(int i = 0; i < THREAD_COUNT; i++) {
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					for(int i = 0; i < 1000; i++){
+						increase();
+					}
+					try {
+						cb.await();	//每执行完一个线程就通知障碍器
+					} catch (Exception e) {}
+				}
+			}).start();
+		}
+		System.out.println("通过障碍器CyclicBarrier：" + race);
 	}
 	
 	//使用栅栏

@@ -23,7 +23,6 @@ public class SingletonCountDownLatch {
 					for(int i=0; i<1000; i++) {
 						InnerClassSingleton2 s1 = InnerClassSingleton2.getInstance();
 					}
-					
 					countDownLatch.countDown();
 				}
 			}).start();

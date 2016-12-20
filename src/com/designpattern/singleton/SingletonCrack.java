@@ -82,12 +82,14 @@ class LazySingleton2 implements Serializable {
 	}
 	
 	public static LazySingleton2 getInstance() {
+		//防止通过反射方式破解单例模式
 		if (instance == null) {
 			instance = new LazySingleton2();
 		}
 		return instance;
 	}
 	
+	//防止通过序列化方式破解单例模式
 	//反序列化时直接调用instance对象，如果定义了readResolve方法则直接返回此方法指定的对象，
 	//而不需要单独再创建新对象
 	private Object readResolve() throws Exception {
