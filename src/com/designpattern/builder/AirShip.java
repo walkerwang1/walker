@@ -2,8 +2,8 @@ package com.designpattern.builder;
 
 
 public class AirShip {
-	private OrbitalModule orbitalModule; 	//轨道舱
 	private Engine engine; 	//发动机
+	private OrbitalModule orbitalModule; 	//轨道舱
 	private EscapeTower escapeTower;	//逃逸塔
 	
 	public void launch() {
@@ -30,6 +30,32 @@ public class AirShip {
 	}
 }
 
+/**
+ * 发动机
+ * @author walkerwang
+ *
+ */
+class Engine {
+	private String name;
+	
+	public Engine(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+}
+
+/**
+ * 轨道舱
+ * @author walkerwang
+ *
+ */
 class OrbitalModule {
 	private String name;
 	
@@ -46,22 +72,11 @@ class OrbitalModule {
 	}
 }
 
-class Engine {
-	private String name;
-	
-	public Engine(String name) {
-		this.name = name;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-}
-
+/**
+ * 逃逸塔
+ * @author walkerwang
+ *
+ */
 class EscapeTower {
 	private String name;
 	
