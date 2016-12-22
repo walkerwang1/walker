@@ -179,7 +179,7 @@ public class SortAlg {
 			tmp[k++] = arr[j++];
 		}
 		for(i=0;i<k; i++){
-			arr[left+i] = tmp[i];	//这里的下标要注意
+			arr[left+i] = tmp[i];	//这里的下标要注意：left+i
 		}
 	}
 	
