@@ -1,8 +1,14 @@
-package com.jvm;
+package com.jvm.outofmenmory;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Java堆内存溢出异常测试
+ * 
+ * @author walkerwang
+ *
+ */
 public class HeapOOM {
 
 	static class OOMObject {
