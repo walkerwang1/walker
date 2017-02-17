@@ -1,8 +1,5 @@
 package com.walkerwang.demo;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class test extends Object {
 	
 	@Override
@@ -12,15 +9,9 @@ public class test extends Object {
 	}
 	
 	public static void main(String[] args) {
-		//1-ArrayList
-		ArrayList aList = new ArrayList<>();
 		
+		String str1 = new String() ;
 		
-		String string = "wang";
-		System.out.println(string);
-		char[] chs = string.toCharArray();
-//		System.out.println(chs);
-//		string = Arrays.toString(chs);
-		System.out.println(chs.toString());
+		System.out.println(" abc cde ".trim().length());
 	}
 }

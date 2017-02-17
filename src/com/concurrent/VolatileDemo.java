@@ -51,7 +51,7 @@ public class VolatileDemo {
 		System.out.println("通过ThreadActiveCount()：" + race);
 	}
 	
-	//使用CountDownLatch
+	//使用CountDownLatch-->计数器
 	static void throughCountDownLatch() throws Exception {
 		race = 0;
 		CountDownLatch countDownLatch = new CountDownLatch(THREAD_COUNT);
@@ -92,6 +92,4 @@ public class VolatileDemo {
 		}
 		System.out.println("通过障碍器CyclicBarrier：" + race);
 	}
-	
-	//使用栅栏
 }
