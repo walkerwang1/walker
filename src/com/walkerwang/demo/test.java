@@ -1,5 +1,10 @@
 package com.walkerwang.demo;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.TreeMap;
+
 public class test extends Object {
 	
 	@Override
@@ -9,9 +14,9 @@ public class test extends Object {
 	}
 	
 	public static void main(String[] args) {
-		
-		String str1 = new String() ;
-		
-		System.out.println(" abc cde ".trim().length());
+		Random random = new Random();
+		for(int i = 0; i < 100; i++) {
+			System.out.println(random.nextDouble());
+		}
 	}
 }

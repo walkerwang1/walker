@@ -1,4 +1,4 @@
-package com.walkerwang.datastructure;
+package com.datastructure;
 
 /*
  * 递归算法汇总

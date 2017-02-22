@@ -5,10 +5,13 @@ import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.nio.ByteBuffer;
 
 public class Demo01 {
@@ -28,6 +31,8 @@ public class Demo01 {
 			fos.flush();
 			fos.close();
 			
+			InputStream is = new DataInputStream(new FileInputStream(new File("dat.txt")));
+			Reader reader;
 			DataInputStream dataInputStream;
 			DataOutputStream dos2;
 			ByteBuffer bggg;

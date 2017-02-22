@@ -1,4 +1,4 @@
-package com.walkerwang.datastructure;
+package com.datastructure;
 
 /*
  * 查找算法

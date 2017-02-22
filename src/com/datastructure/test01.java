@@ -1,4 +1,4 @@
-package com.walkerwang.datastructure;
+package com.datastructure;
 
 public class test01 {
 	public test01() {

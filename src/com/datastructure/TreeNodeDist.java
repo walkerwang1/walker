@@ -1,4 +1,4 @@
-package com.walkerwang.datastructure;
+package com.datastructure;
 
 /*
  * http://www.acmerblog.com/distance-between-given-keys-5995.html

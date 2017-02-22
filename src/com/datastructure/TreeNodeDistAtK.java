@@ -1,4 +1,4 @@
-package com.walkerwang.datastructure;
+package com.datastructure;
 
 /*
  * http://www.acmerblog.com/nodes-distance-k-given-node-6004.html
