@@ -1,4 +1,4 @@
-package com.datastructure;
+package com.datastructure.string;
 
 /**
  * 字符串匹配算法

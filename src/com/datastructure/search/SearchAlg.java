@@ -1,4 +1,4 @@
-package com.datastructure;
+package com.datastructure.search;
 
 /*
  * 查找算法

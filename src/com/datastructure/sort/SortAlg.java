@@ -1,4 +1,4 @@
-package com.datastructure;
+package com.datastructure.sort;
 
 /*
  * 排序算法
