@@ -6,7 +6,7 @@ import java.util.Stack;
 public class Graph {
 	 private static final String NEWLINE = System.getProperty("line.separator");
 
-	private final int V;
+	private final int V;	//空白final（指声明为final但为未给定初值的域，编译器要确保空白final在使用前必须被初始化）
 	private int E;
 	private Bag<Integer>[] adj;
 	
