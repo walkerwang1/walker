@@ -3,7 +3,7 @@ package com.algs4;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Bag<Item> {
+public class Bag<Item> implements Iterable<Item> {
 	private Node<Item> first;	//begining of bag
 	private int n;				//number of elements in bag
 	
@@ -102,18 +102,19 @@ public class Bag<Item> {
 	 */
 	public static void main(String[] args) {
 		Bag<String> bag = new Bag<String>();
-		while(!StdIn.isEmpty()) {
+		while(!StdIn.isEmpty()) {			//按"Ctrl + Z",scanner.hasNext()返回flase
 			String item = StdIn.readString();
 			bag.add(item);
 		}
 		StdOut.println("size of bag = " + bag.size());
-//		for (String s : bag) {
-//			StdOut.println(s);
-//		}
-		Iterator<String> iter = bag.iterator();
-		while(iter.hasNext()) {
-			String s = iter.next();
+		for (String s : bag) {
 			StdOut.println(s);
 		}
+		
+//		Iterator<String> iter = bag.iterator();
+//		while(iter.hasNext()) {
+//			String s = iter.next();
+//			StdOut.println(s);
+//		}
 	}
 }

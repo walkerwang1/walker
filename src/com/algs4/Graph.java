@@ -6,9 +6,10 @@ import java.util.Stack;
 public class Graph {
 	 private static final String NEWLINE = System.getProperty("line.separator");
 
-	private final int V;	//空白final（指声明为final但为未给定初值的域，编译器要确保空白final在使用前必须被初始化）
-	private int E;
-	private Bag<Integer>[] adj;
+	//空白final（指声明为final但为未给定初值的域，编译器要确保空白final在使用前必须被初始化）
+	private final int V;	//顶点数目
+	private int E;			//边的数目
+	private Bag<Integer>[] adj;		//邻接表
 	
 	/**
 	 * Initializes an empty graph with {@code V} vertices and 0 edges
@@ -32,22 +33,22 @@ public class Graph {
 	
 	public Graph(In in) {
 		try {
-			this.V = in.readInt();
+			this.V = in.readInt();		//读取V并将图初始化
 			if (V < 0) {
 				throw new IllegalArgumentException("number of vertices in a Graph must be nonnegative");
 			}
-			adj = (Bag<Integer>[]) new Bag[V];
-			for (int v = 0; v < V; v++) {
+			adj = (Bag<Integer>[]) new Bag[V];		// 创建邻接表
+			for (int v = 0; v < V; v++) {		//将所有链表初始化为空
 				adj[v] = new Bag<Integer>();
 			}
 			
-			int E = in.readInt();
+			int E = in.readInt();		//读取E并将图初始化
 			if (E < 0) {
 				throw new IllegalArgumentException("number of edges in a Graph must be nonnegative");
 			}
-			for (int i = 0; i < E; i++) {
-				int v = in.readInt();
-				int w = in.readInt();
+			for (int i = 0; i < E; i++) {	
+				int v = in.readInt();	//读取一个顶点
+				int w = in.readInt();	//读取另一个顶点
 				validateVertex(v);
 				validateVertex(w);
 				addEdge(v, w);
@@ -73,12 +74,7 @@ public class Graph {
 		this.E = G.E();
 		for (int v = 0; v < V; v++) {
 			Stack<Integer> reverse = new Stack<>();
-//			for (int w : G.adj[v]) {
-//				reverse.push(w);
-//			}
-			Iterator<Integer> iter = G.adj[v].iterator();
-			while(iter.hasNext()) {
-				int w = iter.next();
+			for (int w : G.adj[v]) {
 				reverse.push(w);
 			}
 			
@@ -118,8 +114,8 @@ public class Graph {
 		validateVertex(v);
 		validateVertex(w);
 		E++;
-		adj[v].add(w);
-		adj[w].add(v);
+		adj[v].add(w);		//将w添加到v的链表中
+		adj[w].add(v);		//将v添加到w的链表中
 	}
 	
 	/**
@@ -131,9 +127,8 @@ public class Graph {
      */
 	public Iterable<Integer> adj(int v) {
 		validateVertex(v);
-		//adj[v]是Bag对象，怎么返回Iterable？
-//		return adj[v];
-		return null;
+		//adj[v]是Bag对象，怎么返回Iterable？（Bag数据类型继承Iterable接口后，即可返回Iterable对象）
+		return adj[v];
 	}
 	
 	/**
