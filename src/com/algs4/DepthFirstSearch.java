@@ -1,5 +1,7 @@
 package com.algs4;
 
+import java.io.File;
+
 /**
  * 深度优先搜索：
  * 1-判断两个顶点是否可达；
@@ -76,9 +78,9 @@ public class DepthFirstSearch {
 	}
 	
 	public static void main(String[] args) {
-		In in = new In(args[0]);
+		In in = new In(new File("tinyG.txt"));
 		Graph G = new Graph(in);
-		int s = Integer.parseInt(args[1]);
+		int s = 0;
 		DepthFirstSearch search = new DepthFirstSearch(G, s);
 		for (int v = 0; v < G.V(); v++) {
 			if (search.marked(v) && v != s) {
