@@ -3,6 +3,13 @@ package com.algs4;
 import java.util.Iterator;
 import java.util.Stack;
 
+/**
+ * 图结构：
+ * 无向图、有向图、加权有向图、
+ * 
+ * @author walkerwang
+ *
+ */
 public class Graph {
 	 private static final String NEWLINE = System.getProperty("line.separator");
 

@@ -3,8 +3,6 @@ package com.algs4;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import javax.print.attribute.standard.NumberUp;
-
 
 public class Queue<Item> implements Iterable<Item> {
 

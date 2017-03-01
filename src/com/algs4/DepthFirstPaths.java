@@ -3,6 +3,25 @@ package com.algs4;
 import java.io.File;
 import java.util.Stack;
 
+/**
+ * 
+ * @author walkerwang
+ *
+ * result:
+ *  1 to 0: 1-0
+	1 to 1: 1
+	1 to 2: 1-0-2
+	1 to 3: 1-0-6-4-5-3
+	1 to 4: 1-0-6-4
+	1 to 5: 1-0-6-4-5
+	1 to 6: 1-0-6
+	1 to 7:  not connected
+	1 to 8:  not connected
+	1 to 9:  not connected
+	1 to 10:  not connected
+	1 to 11:  not connected
+	1 to 12:  not connected
+ */
 public class DepthFirstPaths {
 
 	private boolean[] marked; 
@@ -29,7 +48,7 @@ public class DepthFirstPaths {
 		marked[v] = true;
 		for (int w : G.adj(v)) {
 			if (!marked[w]) {
-				edgeTo[w] = v;
+				edgeTo[w] = v;	// v->w, edgeTo[w]=v
 				dfs(G, w);
 			}
 		}
