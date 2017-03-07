@@ -1,14 +1,23 @@
 package com.walkerwang.demo;
 
-import java.util.Stack;
-
 public class test extends Object {
 	
+	public static void add(Integer b) {
+		b = b++;
+	}
+	
+	public static void test (){
+//		Byte a = 127;
+//		Byte b = 127;
+		Integer a  =127;
+		Integer b = 127;
+		add(++a);
+		System.out.println(a + " ");
+		add(b);
+		System.out.println(b + " ");
+	}
 	public static void main(String[] args) {
-		Father a = new child();
-		a.print();
-		
-		Stack<Integer> stack;
+		test();
 	}
 	
 	

@@ -1,6 +1,7 @@
 package com.walkerwang.demo;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class test_private implements Serializable{
 
@@ -12,5 +13,8 @@ public class test_private implements Serializable{
 		void get() {
 			element = new int[10];
 		}
+	}
+	 
+	 public static void main(String[] args) {
 	}
 }

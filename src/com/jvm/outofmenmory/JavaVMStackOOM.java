@@ -1,9 +1,9 @@
 package com.jvm.outofmenmory;
 
 /**
- * VM args：-Xss2M
  * 创建线程导致内存溢出异常
- * @author walkerwang
+ * 
+ * VM args：-Xss2M
  *
  */
 public class JavaVMStackOOM {
