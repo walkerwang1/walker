@@ -17,6 +17,8 @@ public class test extends Object {
 		System.out.println(b + " ");
 	}
 	public static void main(String[] args) {
+		ClassLoader classLoader =null;
+//		Launcher ls = null;
 		test();
 	}
 	
