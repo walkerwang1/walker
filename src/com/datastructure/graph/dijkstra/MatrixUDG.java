@@ -419,7 +419,7 @@ public class MatrixUDG {
         // 初始化
         for (int i = 0; i < mVexs.length; i++) {
             flag[i] = false;          // 顶点i的最短路径还没获取到。
-            prev[i] = 0;              // 顶点i的前驱顶点为0。
+            prev[i] = 3;              // 顶点i的前驱顶点为vs
             dist[i] = mMatrix[vs][i];  // 顶点i的最短路径为"顶点vs"到"顶点i"的权。
         }
 
@@ -439,6 +439,7 @@ public class MatrixUDG {
                     k = j;
                 }
             }
+            
             // 标记"顶点k"为已经获取到最短路径
             flag[k] = true;
 
@@ -456,7 +457,7 @@ public class MatrixUDG {
         // 打印dijkstra最短路径的结果
         System.out.printf("dijkstra(%c): \n", mVexs[vs]);
         for (int i=0; i < mVexs.length; i++){
-//        	System.out.println(mVexs[i] + ":" + mVexs[prev[i]]);  //prev[i]记录每个目的节点的前驱节点，而不是路径上的节点
+        	System.out.println(mVexs[i] + ":" + mVexs[prev[i]]);  //prev[i]记录每个目的节点的前驱节点，而不是路径上的节点
         	if (mVexs[i] == 'A') {		//D到指定顶点的最短距离
 			}
         	System.out.printf(" %c-->%c:%d\n", mVexs[vs], mVexs[i], dist[i]);
