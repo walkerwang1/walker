@@ -59,6 +59,8 @@ public class SortAlg {
 			while(i<j && arr[i]<=tmp){
 				i++;
 			}
+			
+			//3 1 4 2 5。需要交换4和2的值
 			if(i < j){
 				int t;
 				t = arr[i];
@@ -178,6 +180,8 @@ public class SortAlg {
 		while(j <= n){
 			tmp[k++] = arr[j++];
 		}
+		
+		//将tmp中的值全部赋值到arr中
 		for(i=0;i<k; i++){
 			arr[left+i] = tmp[i];	//这里的下标要注意：left+i
 		}
