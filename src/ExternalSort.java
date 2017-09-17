@@ -1,17 +1,19 @@
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Random;
 
 public class ExternalSort {
 	
-	static int count = 10000000;     	// 文件里数据的行数
-	int number_to_sort = 1000000;     //在内存中一次排序的数量  
-	String unsort_file = "unsort_data.txt";     //原始未排序的文件名   
-	String sort_file = "sort_data.txt";     //已排序的文件名 
+	static int count = 10000;     	// 文件里数据的行数
+	static int number_to_sort = 1000000;     //在内存中一次排序的数量  
+	static String unsort_file = "d:/bigdatasort/unsort_data.txt";     //原始未排序的文件名   
+	static String sort_file = "sort_data.txt";     //已排序的文件名 
 	
 	public static void main(String[] args) {
 		 ExternalSort externalSort = new ExternalSort();
 		 externalSort.init_data(count);
+		 
 	}
 	
 	void sort() {
@@ -39,9 +41,11 @@ public class ExternalSort {
 	public void init_data(int count) {
 		OutputStreamWriter os;
 		try {
+			
 			os = new OutputStreamWriter(new FileOutputStream(unsort_file), "utf-8");
-			for(int i = 0; i < count; i++) {
-				os.write(new Random().nextInt());
+			for(int i = 0; i < 1000; i++) {
+				int a = Math.abs(new Random().nextInt());
+				os.write(String.valueOf(a) + " ");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

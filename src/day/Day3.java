@@ -13,7 +13,7 @@ public class Day3 {
 	}
 	
 	/*
-	 * 1-找出数组中次数超过一半的数
+	 * 1-找出数组中出现次数超过一半的数
 	 */
 	public void moreThanHalfNum(int[] arr) {
 		
