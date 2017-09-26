@@ -6,7 +6,7 @@ public class Day5 {
 	public static void main(String[] args) {
 		Day5 day5 = new Day5();
 		int[] arr = {1,3,4,5,9,10,12,14,15,20};
-		int x = 22;
+		int x = 24;
 		int[] result = day5.sum(arr, x);
 		for(int i = 0; i < result.length-1; i=i+2) {
 			if (result[0] == 0) {

@@ -1,14 +1,11 @@
 package day;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Day4 {
 
 	public static void main(String[] args) {
 		Day4 day4 = new Day4();
-//		int[] arr = {1,-2,3,10,-4,7,2,-5};
-		int[] arr = {-2,-1,-3};
+		int[] arr = {1,-2,3,10,-4,7,2,-5};
+//		int[] arr = {-2,-1,-3, -4};
 		System.out.println(day4.conSubArray(arr));
 	}
 	
@@ -31,7 +28,9 @@ public class Day4 {
 			currSum += v;
 			if (currSum < v) {		//如果和比当前数字小，则从当前数字重新开始
 				currSum = v;
-				start_index = i;
+				
+				if(currSum > maxSum)
+					start_index = i;
 			}
 			if (currSum > maxSum) {
 				maxSum = currSum;
