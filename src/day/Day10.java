@@ -46,7 +46,8 @@ public class Day10 {
 	}
 	
 	/*
-	 * 齐肯多夫表示，菲波那切数列
+	 * 齐肯多夫表示，菲波那切数列。
+	 * 	针对数组中的数字不重复。
 	 */
 	public int qiken(int n) {
 		if (n == 1) {
