@@ -1,4 +1,4 @@
-package day;
+package day.month9;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -48,6 +48,7 @@ public class Day9 {
         }
         if(n >= arr.length)
             return;
+        
         for(int i=n;i< arr.length;i++){
             if(!visited[i]){
                 currSum += arr[i];

@@ -1,4 +1,4 @@
-package day;
+package day.month9;
 
 public class Day3 {
 	

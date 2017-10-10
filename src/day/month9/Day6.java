@@ -1,4 +1,4 @@
-package day;
+package day.month9;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +61,7 @@ public class Day6 {
 					list.add(factor);
 				}
 			} else {
+				//如果factor是质数，且list中不包含改数，则表示质因数不连续
 				if (isPrimeNum(factor) && !list.contains(factor)) {
 					flag = false;
 					break;

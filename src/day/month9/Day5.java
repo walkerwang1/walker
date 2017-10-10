@@ -1,5 +1,6 @@
-package day;
+package day.month9;
 
+import java.util.Arrays;
 
 public class Day5 {
 
@@ -28,28 +29,42 @@ public class Day5 {
 		int i = 0;
 		int j = arr.length - 1;
 		int k = 0;
-		while(i < j) {
-			int a = arr[i];
-			int b = arr[j];
-			if (a + b == x && i < j) {
+		int a = arr[i];
+		int b = arr[j];
+		//两边同时扫描
+		while(i != j) {
+			if (a + b == x) {
 				result[k++] = i++;
 				result[k++] = j;
+				a = arr[i];
+				continue;
 			}
-			while(a + b > x && i != j) {
+			while(a + b > x) {
 				b = arr[--j];
-				if (a + b == x && i < j) {
-					result[k++] = i++;
-					result[k++] = j;
-				}
 			}
-			while(a + b < x && i != j) {
+			while(a + b < x) {
 				a = arr[++i];
-				if (a + b == x && i < j) {
-					result[k++] = i++;
-					result[k++] = j;
-				}
 			}
 		}
 		return result;
+	}
+	
+	public void sum2(int[] arr, int sum) {
+		Arrays.sort(arr);
+		int first = 0;
+		int last = arr.length - 1;
+		while(first < last) {
+			int s = arr[first] + arr[last];
+			if (s == sum) {
+				first++;
+				last--;
+			} else {
+				if (s < sum) {
+					first++;
+				} else {
+					last--;
+				}
+			}
+		}
 	}
 }

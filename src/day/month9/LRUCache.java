@@ -1,4 +1,4 @@
-package day;
+package day.month9;
 
 import java.util.HashMap;
 
@@ -33,13 +33,13 @@ public class LRUCache<K, V> {
 			entry = new Entry<>();
 			entry.key = key;
 		}
-		entry.value = value;
-		moveToFirst(entry);
+		entry.value = value;	//key已存在，只需要更新值即可
+		moveToFirst(entry);		//如果entry在链表中存在，则移到链表最前面
 		hashMap.put(key, entry);
 	}
 	
 	/*
-	 * 按key值获取某个元素
+	 * 按key值获取某个元素。访问该key后需要更新其位置
 	 */
 	public V get(K key) {
 		Entry<K, V> entry = getEntry(key);
@@ -81,12 +81,14 @@ public class LRUCache<K, V> {
 			entry.pre.next = entry.next;
 		if (entry.next != null) 
 			entry.next.pre = entry.pre;
-		if (entry == last)	//尾部元素移到最前面
+		if (entry == last)	//如果是last元素，last指针需要向前移动一次
 			last = last.pre;
 		if (first == null || last == null) {
 			first = last = entry;
 			return;
 		}
+	
+		//前面的步骤是将entry从链表中脱离，下面实施真正的插入到first位置
 		entry.next = first;
 		first.pre = entry;
 		first = entry;
@@ -99,6 +101,7 @@ public class LRUCache<K, V> {
 	private void removeLast() {
 		if (last != null) {
 			last = last.pre;
+			//判断last前面是否有元素
 			if (last == null) 
 				first = null;
 			else
