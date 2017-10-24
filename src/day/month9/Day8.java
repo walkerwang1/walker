@@ -6,7 +6,7 @@ public class Day8 {
 	
 	private static ArrayList <Integer> list = new ArrayList<>();  
     public static void main(String[] args) {  
-        int [] arr = {1,3,4,5,2};  
+        int [] arr = {1,2,3,4};  
         int k = 3;    	//取k个数
         if(k > arr.length || arr.length <= 0){  
             return ;  
